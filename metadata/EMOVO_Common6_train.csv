@@ -1,0 +1,337 @@
+audio_file,raw_text,label,speaker_id
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-d1.wav,Sabato sera cosa farà?,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-b2.wav,I vigili sono muniti di pistola.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-d1.wav,Sabato sera cosa farà?,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-n1.wav,La casa forte vuole col pane.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-b3.wav,La cascata fa molto rumore.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-n3.wav,Il gatto sta scorrendo nella pera.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-d2.wav,Porti con te quella cosa?,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-n2.wav,La forza trova il passo e l’aglio rosso.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-n3.wav,Il gatto sta scorrendo nella pera.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-n2.wav,La forza trova il passo e l’aglio rosso.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-b1.wav,Gli operai si alzano presto.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-n2.wav,La forza trova il passo e l’aglio rosso.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-b2.wav,I vigili sono muniti di pistola.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-n2.wav,La forza trova il passo e l’aglio rosso.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-d2.wav,Porti con te quella cosa?,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-n2.wav,La forza trova il passo e l’aglio rosso.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-b1.wav,Gli operai si alzano presto.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-d2.wav,Porti con te quella cosa?,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-n2.wav,La forza trova il passo e l’aglio rosso.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-b1.wav,Gli operai si alzano presto.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-b2.wav,I vigili sono muniti di pistola.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-b3.wav,La cascata fa molto rumore.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-n1.wav,La casa forte vuole col pane.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-b1.wav,Gli operai si alzano presto.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-n3.wav,Il gatto sta scorrendo nella pera.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-d1.wav,Sabato sera cosa farà?,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-d2.wav,Porti con te quella cosa?,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-n1.wav,La casa forte vuole col pane.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-n3.wav,Il gatto sta scorrendo nella pera.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-b1.wav,Gli operai si alzano presto.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-b3.wav,La cascata fa molto rumore.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-d2.wav,Porti con te quella cosa?,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-n1.wav,La casa forte vuole col pane.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-n3.wav,Il gatto sta scorrendo nella pera.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_dis-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,5,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-b1.wav,Gli operai si alzano presto.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-b3.wav,La cascata fa molto rumore.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-n3.wav,Il gatto sta scorrendo nella pera.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_gio-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,2,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-b2.wav,I vigili sono muniti di pistola.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-d1.wav,Sabato sera cosa farà?,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_neu-f1-n1.wav,La casa forte vuole col pane.,3,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-d1.wav,Sabato sera cosa farà?,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_pau-f1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,4,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-b2.wav,I vigili sono muniti di pistola.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-b3.wav,La cascata fa molto rumore.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-d1.wav,Sabato sera cosa farà?,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-d2.wav,Porti con te quella cosa?,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-n1.wav,La casa forte vuole col pane.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_rab-f1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,0,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-b2.wav,I vigili sono muniti di pistola.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-b3.wav,La cascata fa molto rumore.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f1_tri-f1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,1,f1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-b2.wav,I vigili sono muniti di pistola.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-n1.wav,La casa forte vuole col pane.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-b1.wav,Gli operai si alzano presto.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-n3.wav,Il gatto sta scorrendo nella pera.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-b2.wav,I vigili sono muniti di pistola.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-n1.wav,La casa forte vuole col pane.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-n3.wav,Il gatto sta scorrendo nella pera.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-d2.wav,Porti con te quella cosa?,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-d1.wav,Sabato sera cosa farà?,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-n2.wav,La forza trova il passo e l’aglio rosso.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-b2.wav,I vigili sono muniti di pistola.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-b1.wav,Gli operai si alzano presto.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-d1.wav,Sabato sera cosa farà?,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-n1.wav,La casa forte vuole col pane.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-b1.wav,Gli operai si alzano presto.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-n2.wav,La forza trova il passo e l’aglio rosso.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-b1.wav,Gli operai si alzano presto.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-b3.wav,La cascata fa molto rumore.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-n1.wav,La casa forte vuole col pane.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-n2.wav,La forza trova il passo e l’aglio rosso.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-b1.wav,Gli operai si alzano presto.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-b3.wav,La cascata fa molto rumore.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-d2.wav,Porti con te quella cosa?,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-n1.wav,La casa forte vuole col pane.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-n3.wav,Il gatto sta scorrendo nella pera.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-b1.wav,Gli operai si alzano presto.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-b3.wav,La cascata fa molto rumore.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-n1.wav,La casa forte vuole col pane.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-b3.wav,La cascata fa molto rumore.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-d2.wav,Porti con te quella cosa?,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-n2.wav,La forza trova il passo e l’aglio rosso.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_dis-f2-n3.wav,Il gatto sta scorrendo nella pera.,5,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-b2.wav,I vigili sono muniti di pistola.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-b3.wav,La cascata fa molto rumore.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-d1.wav,Sabato sera cosa farà?,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-d2.wav,Porti con te quella cosa?,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-n2.wav,La forza trova il passo e l’aglio rosso.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_gio-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,2,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-b3.wav,La cascata fa molto rumore.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-d1.wav,Sabato sera cosa farà?,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-d2.wav,Porti con te quella cosa?,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_neu-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,3,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-b2.wav,I vigili sono muniti di pistola.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-d1.wav,Sabato sera cosa farà?,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_pau-f2-n3.wav,Il gatto sta scorrendo nella pera.,4,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-b2.wav,I vigili sono muniti di pistola.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_rab-f2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,0,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-d1.wav,Sabato sera cosa farà?,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-d2.wav,Porti con te quella cosa?,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-n2.wav,La forza trova il passo e l’aglio rosso.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_f2_tri-f2-n3.wav,Il gatto sta scorrendo nella pera.,1,f2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-d1.wav,Sabato sera cosa farà?,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-d2.wav,Porti con te quella cosa?,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-n1.wav,La casa forte vuole col pane.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-b3.wav,La cascata fa molto rumore.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-n2.wav,La forza trova il passo e l’aglio rosso.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-b1.wav,Gli operai si alzano presto.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-d2.wav,Porti con te quella cosa?,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-n1.wav,La casa forte vuole col pane.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-n2.wav,La forza trova il passo e l’aglio rosso.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-b3.wav,La cascata fa molto rumore.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-d1.wav,Sabato sera cosa farà?,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-d1.wav,Sabato sera cosa farà?,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-b3.wav,La cascata fa molto rumore.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-d2.wav,Porti con te quella cosa?,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-b1.wav,Gli operai si alzano presto.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-d1.wav,Sabato sera cosa farà?,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-d2.wav,Porti con te quella cosa?,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-n3.wav,Il gatto sta scorrendo nella pera.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-b2.wav,I vigili sono muniti di pistola.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-d1.wav,Sabato sera cosa farà?,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-b1.wav,Gli operai si alzano presto.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-d2.wav,Porti con te quella cosa?,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-n3.wav,Il gatto sta scorrendo nella pera.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-b1.wav,Gli operai si alzano presto.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-b2.wav,I vigili sono muniti di pistola.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-d2.wav,Porti con te quella cosa?,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-n1.wav,La casa forte vuole col pane.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-b1.wav,Gli operai si alzano presto.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-d1.wav,Sabato sera cosa farà?,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-n1.wav,La casa forte vuole col pane.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-n2.wav,La forza trova il passo e l’aglio rosso.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-b2.wav,I vigili sono muniti di pistola.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-b3.wav,La cascata fa molto rumore.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-n2.wav,La forza trova il passo e l’aglio rosso.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-n3.wav,Il gatto sta scorrendo nella pera.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_dis-m1-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,5,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-b1.wav,Gli operai si alzano presto.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-b2.wav,I vigili sono muniti di pistola.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_gio-m1-n1.wav,La casa forte vuole col pane.,2,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-b3.wav,La cascata fa molto rumore.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-l4.wav,Vorrei il numero telefonico del Signor Piatti.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_neu-m1-n3.wav,Il gatto sta scorrendo nella pera.,3,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-b2.wav,I vigili sono muniti di pistola.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-n1.wav,La casa forte vuole col pane.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-n2.wav,La forza trova il passo e l’aglio rosso.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_pau-m1-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,4,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-b3.wav,La cascata fa molto rumore.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-n2.wav,La forza trova il passo e l’aglio rosso.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_rab-m1-n3.wav,Il gatto sta scorrendo nella pera.,0,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-b2.wav,I vigili sono muniti di pistola.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m1_tri-m1-n3.wav,Il gatto sta scorrendo nella pera.,1,m1
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-b1.wav,Gli operai si alzano presto.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-b2.wav,I vigili sono muniti di pistola.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-b3.wav,La cascata fa molto rumore.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-n2.wav,La forza trova il passo e l’aglio rosso.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-b2.wav,I vigili sono muniti di pistola.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-d1.wav,Sabato sera cosa farà?,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-n3.wav,Il gatto sta scorrendo nella pera.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-b2.wav,I vigili sono muniti di pistola.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-d1.wav,Sabato sera cosa farà?,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-d2.wav,Porti con te quella cosa?,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-n1.wav,La casa forte vuole col pane.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-n2.wav,La forza trova il passo e l’aglio rosso.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-n1.wav,La casa forte vuole col pane.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-n3.wav,Il gatto sta scorrendo nella pera.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-b2.wav,I vigili sono muniti di pistola.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-b3.wav,La cascata fa molto rumore.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-d2.wav,Porti con te quella cosa?,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-n1.wav,La casa forte vuole col pane.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-b1.wav,Gli operai si alzano presto.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-b3.wav,La cascata fa molto rumore.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-d2.wav,Porti con te quella cosa?,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-n3.wav,Il gatto sta scorrendo nella pera.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-b3.wav,La cascata fa molto rumore.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-b1.wav,Gli operai si alzano presto.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-b3.wav,La cascata fa molto rumore.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-b1.wav,Gli operai si alzano presto.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-b2.wav,I vigili sono muniti di pistola.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-d2.wav,Porti con te quella cosa?,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-n2.wav,La forza trova il passo e l’aglio rosso.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-b1.wav,Gli operai si alzano presto.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-d1.wav,Sabato sera cosa farà?,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-d2.wav,Porti con te quella cosa?,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-n3.wav,Il gatto sta scorrendo nella pera.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-d1.wav,Sabato sera cosa farà?,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-l1.wav,L’autunno prossimo Tony partirà per la Spagna nella prima metà di ottobre.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_dis-m2-n3.wav,Il gatto sta scorrendo nella pera.,5,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-d1.wav,Sabato sera cosa farà?,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-n1.wav,La casa forte vuole col pane.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_gio-m2-n2.wav,La forza trova il passo e l’aglio rosso.,2,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-b1.wav,Gli operai si alzano presto.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-b2.wav,I vigili sono muniti di pistola.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-d2.wav,Porti con te quella cosa?,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-n1.wav,La casa forte vuole col pane.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-n2.wav,La forza trova il passo e l’aglio rosso.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_neu-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,3,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-l2.wav,Ora prendo la felpa di là ed esco per fare una passeggiata.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-n3.wav,Il gatto sta scorrendo nella pera.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_pau-m2-n5.wav,Uno quarantatré dieci mille cinquantasette venti.,4,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-b3.wav,La cascata fa molto rumore.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-d1.wav,Sabato sera cosa farà?,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_rab-m2-n4.wav,Insalata pastasciutta coscia d’agnello limoncello.,0,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-l3.wav,Un attimo dopo s’è incamminato ... ed è inciampato.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-l4.wav,Vorrei il numero telefonico del Signor Piatti.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-n1.wav,La casa forte vuole col pane.,1,m2
+/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k/EMOVO_m2_tri-m2-n2.wav,La forza trova il passo e l’aglio rosso.,1,m2

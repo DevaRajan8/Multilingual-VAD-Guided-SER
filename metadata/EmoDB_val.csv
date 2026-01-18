@@ -1,0 +1,57 @@
+audio_file,raw_text,label,speaker_id
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a01Fb.wav,Der Lappen liegt auf dem Eisschrank.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a01La.wav,Der Lappen liegt auf dem Eisschrank.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a01Nb.wav,Der Lappen liegt auf dem Eisschrank.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a01Wa.wav,Der Lappen liegt auf dem Eisschrank.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Ta.wav,Das will sie am Mittwoch abgeben.,5,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Wd.wav,Das will sie am Mittwoch abgeben.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Fd.wav,Heute Abend könnte ich es ihm sagen.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a05Fb.wav,Das schwarze Stück Papier befindet sich da oben neben dem Holzstück.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a05Na.wav,Das schwarze Stück Papier befindet sich da oben neben dem Holzstück.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Fa.wav,In sieben Stunden wird es soweit sein.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Fb.wav,In sieben Stunden wird es soweit sein.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Nc.wav,In sieben Stunden wird es soweit sein.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b01Wc.wav,"Was sind denn das für Tüten, die da unter dem Tisch stehen?",0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Nd.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Wa.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Tc.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,5,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b10Ac.wav,"Die wird auf dem Platz sein, wo wir sie immer hinlegen.",3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b10Nb.wav,"Die wird auf dem Platz sein, wo wir sie immer hinlegen.",6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Ea.wav,Das will sie am Mittwoch abgeben.,2,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02La.wav,Das will sie am Mittwoch abgeben.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Na.wav,Das will sie am Mittwoch abgeben.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Wb.wav,Das will sie am Mittwoch abgeben.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Ac.wav,Heute Abend könnte ich es ihm sagen.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Nc.wav,Heute Abend könnte ich es ihm sagen.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Wb.wav,Heute Abend könnte ich es ihm sagen.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a05Lb.wav,Das schwarze Stück Papier befindet sich da oben neben dem Holzstück.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a05Wa.wav,Das schwarze Stück Papier befindet sich da oben neben dem Holzstück.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Eb.wav,In sieben Stunden wird es soweit sein.,2,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b01Ec.wav,"Was sind denn das für Tüten, die da unter dem Tisch stehen?",2,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b01Lb.wav,"Was sind denn das für Tüten, die da unter dem Tisch stehen?",1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Aa.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Lb.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Wa.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09Nb.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b10Wa.wav,"Die wird auf dem Platz sein, wo wir sie immer hinlegen.",0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a01Ea.wav,Der Lappen liegt auf dem Eisschrank.,2,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a02Ac.wav,Das will sie am Mittwoch abgeben.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Ab.wav,Heute Abend könnte ich es ihm sagen.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a04Wa.wav,Heute Abend könnte ich es ihm sagen.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a05Eb.wav,Das schwarze Stück Papier befindet sich da oben neben dem Holzstück.,2,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Ac.wav,In sieben Stunden wird es soweit sein.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15a07Ld.wav,In sieben Stunden wird es soweit sein.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b01Na.wav,"Was sind denn das für Tüten, die da unter dem Tisch stehen?",6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Tc.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,5,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b02Wc.wav,Sie haben es gerade hoch getragen und jetzt gehen sie wieder runter.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Aa.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Lc.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Nb.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,6,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b03Wb.wav,An den Wochenenden bin ich jetzt immer nach Hause gefahren und habe Agnes besucht.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09Ac.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,3,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09Fa.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,4,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09La.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09Ta.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,5,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b09Wb.wav,Ich will das eben wegbringen und dann mit Karl was trinken gehen.,0,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b10Lc.wav,"Die wird auf dem Platz sein, wo wir sie immer hinlegen.",1,15
+/dist_home/suryansh/sharukesh/speech/german/emodb_wavs_16k/15b10Nc.wav,"Die wird auf dem Platz sein, wo wir sie immer hinlegen.",6,15

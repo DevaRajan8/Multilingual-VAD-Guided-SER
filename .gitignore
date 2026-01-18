@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Model Weights and Large Files
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.onnx
+*.pkl
+results.json
+best_models/
+
+# Datasets and Features
+features_common_6/
+temp_inference.wav
+
+# IDE
+.vscode/
+.idea/

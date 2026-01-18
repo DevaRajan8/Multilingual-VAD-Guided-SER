@@ -1,0 +1,101 @@
+"""
+Extract Multilingual BERT + emotion2vec features for EMOVO (Common-6)
+"""
+import warnings
+warnings.filterwarnings('ignore')
+
+import os
+import torch
+import pickle
+import numpy as np
+import pandas as pd
+from transformers import BertTokenizer, BertModel
+from funasr import AutoModel
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+TEXT_MAX_LENGTH = 100
+
+# Input Paths
+EMOVO_TRAIN_PATH = "metadata_common_6/EMOVO_Common6_train.csv"
+EMOVO_VAL_PATH =   "metadata_common_6/EMOVO_Common6_val.csv"
+EMOVO_TEST_PATH =  "metadata_common_6/EMOVO_Common6_test.csv"
+
+OUTPUT_PATH = "features_common_6/"
+os.makedirs(OUTPUT_PATH, exist_ok=True)
+
+# 1. Load Multilingual BERT (Crucial for Italian)
+print("Loading Multilingual BERT...")
+tokenizer = BertTokenizer.from_pretrained('bert-base-multilingual-cased')
+text_model = BertModel.from_pretrained('bert-base-multilingual-cased', use_safetensors=True).to(device)
+
+# 2. Load emotion2vec
+print("Loading emotion2vec...")
+emotion2vec_model = AutoModel(model="iic/emotion2vec_plus_large", model_revision="v2.0.5")
+
+def extract_emotion2vec_features(audio_path):
+    try:
+        result = emotion2vec_model.generate(audio_path, output_dir=None, granularity="utterance")
+        if isinstance(result, list) and len(result) > 0:
+            feats = result[0].get('feats', None)
+            if feats is not None:
+                if isinstance(feats, np.ndarray):
+                    return torch.from_numpy(feats).float()
+                return feats.float()
+        return None
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
+def process_dataset(dataset_path, output_file):
+    if not os.path.exists(dataset_path):
+        print(f"Skipping {dataset_path} (not found)")
+        return
+
+    dataset = pd.read_csv(dataset_path)
+    processed_data = []
+
+    print(f"Processing {len(dataset)} samples from {dataset_path}...")
+
+    with torch.no_grad():
+        for idx in range(len(dataset)):
+            if idx % 50 == 0: print(f"  Progress: {idx}/{len(dataset)}")
+            
+            try:
+                # Text
+                text = dataset['raw_text'][idx]
+                text_token = tokenizer(
+                    text, return_tensors="pt", truncation=True, 
+                    max_length=TEXT_MAX_LENGTH, padding="max_length"
+                )
+                text_token = text_token.to(device)
+                text_embed = text_model(**text_token).last_hidden_state[:, 0, :][0].cpu()
+
+                # Audio
+                audio_file = dataset['audio_file'][idx]
+                audio_embed = extract_emotion2vec_features(audio_file)
+                if audio_embed is None: continue
+
+                # Label (Already mapped to 0-5 in CSV)
+                label = torch.tensor(int(dataset['label'][idx]))
+
+                processed_data.append({
+                    'text_embed': text_embed,
+                    'audio_embed': audio_embed,
+                    'label': label,
+                    'speaker_id': dataset['speaker_id'][idx]
+                })
+
+            except Exception as e:
+                print(f"  Error at idx {idx}: {e}")
+
+    with open(output_file, "wb") as file:
+        pickle.dump(processed_data, file)
+    print(f"Saved to {output_file}")
+
+def main():
+    process_dataset(EMOVO_TRAIN_PATH, f"{OUTPUT_PATH}EMOVO_Common6_train.pkl")
+    process_dataset(EMOVO_VAL_PATH, f"{OUTPUT_PATH}EMOVO_Common6_val.pkl")
+    process_dataset(EMOVO_TEST_PATH, f"{OUTPUT_PATH}EMOVO_Common6_test.pkl")
+
+if __name__ == "__main__":
+    main()

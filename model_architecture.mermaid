@@ -1,0 +1,73 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f4f4f4'}}}%%
+flowchart LR
+    %% Styles
+    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef process fill:#fff3e0,stroke:#ff6f00,stroke-width:2px;
+    classDef fusion fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    classDef output fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    classDef component fill:#ffffff,stroke:#333,stroke-dasharray: 5 5;
+
+    %% Subgraph: Text Branch
+    subgraph TextStream [Text Modality]
+        direction TB
+        TextIn(["Text Input"]):::input --> TextBERT["mBERT Extracts\n(768 dim)"]:::process
+        TextBERT --> TextProj["Linear Proj\n(384 dim)"]:::process
+        TextProj --> TextEnc["Transformer Encoder\n(Self-Attn)"]:::process
+    end
+
+    %% Subgraph: Audio Branch
+    subgraph AudioStream [Audio Modality]
+        direction TB
+        AudioIn(["Audio Input"]):::input --> AudioE2V["emotion2vec\n(1024 dim)"]:::process
+        AudioE2V --> AudioProj["Linear Proj\n(384 dim)"]:::process
+        AudioProj --> AudioEnc["Transformer Encoder\n(Self-Attn)"]:::process
+    end
+
+    %% Cross-Modal Interaction (Iterative)
+    subgraph VGA [Cross-Modal Interaction]
+        direction TB
+        VGA_Layer["VAD-Guided\nBidirectional Attention\n(x Layers)"]:::fusion
+    end
+
+    TextEnc --> VGA_Layer
+    AudioEnc --> VGA_Layer
+
+    %% Pooling
+    subgraph Pooling [Attentive Pooling]
+        direction TB
+        TextPool["Text Pooling"]:::process
+        AudioPool["Audio Pooling"]:::process
+    end
+
+    VGA_Layer -- Text Rep --> TextPool
+    VGA_Layer -- Audio Rep --> AudioPool
+
+    %% Fusion
+    subgraph Fusion [Fusion Layer]
+        EAAF["Emotion Aware\nAdaptive Fusion"]:::fusion
+    end
+
+    TextPool --> EAAF
+    AudioPool --> EAAF
+
+    %% Heads
+    subgraph Heads [Prediction Heads]
+        VADHead["VAD Regressor"]:::process
+        Classifier["Residual Classifier"]:::output
+    end
+
+    EAAF -- Fused Rep --> VADHead
+    VADHead -- VAD Values --> VADOut(["Valence, Arousal, Dominance"]):::output
+    
+    EAAF -- Fused Rep --> Classifier
+    VADHead -. VAD Features .-> Classifier
+    Classifier --> ClassOut(["6 Emotion Classes"]):::output
+
+    %% Contrastive Loss (Auxiliary)
+    subgraph SupCon [Auxiliary Task]
+        MICL["MICL Projector"]:::component
+    end
+    
+    TextPool -.-> MICL
+    AudioPool -.-> MICL
+    MICL -.-> SupConLoss(["SupCon Loss"]):::component
