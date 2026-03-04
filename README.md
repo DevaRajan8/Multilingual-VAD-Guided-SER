@@ -2,8 +2,6 @@
 
 A joint multilingual, multimodal Speech Emotion Recognition (SER) system trained simultaneously on five corpora spanning four languages. The model fuses audio representations from `emotion2vec` with multilingual text embeddings from `mBERT`, guided by a novel VAD-aware cross-modal attention mechanism and optimized with a multi-task training objective.
 
-> 📄 **Paper in progress** — IEEE submission (2026)
-
 ---
 
 ## 🌟 Key Features
@@ -38,7 +36,7 @@ A joint multilingual, multimodal Speech Emotion Recognition (SER) system trained
 ├── comparison/                  # Comparison data and scripts
 ├── metadata/                    # CSV files: audio_file, raw_text, label, speaker_id [gitignored]
 ├── results/                     # JSON results from multi-run evaluations [gitignored]
-├── architecture.png             # Model architecture diagram
+├── arch.png             # Model architecture diagram
 └── requirements.txt
 ```
 
@@ -102,7 +100,7 @@ Outputs: predicted emotion label, confidence score, and VAD (Valence, Arousal, D
 
 ## 📊 Model Architecture
 
-![Architecture](architecture.png)
+![Architecture](arch.png)
 
 | Stage | Component | Detail |
 |---|---|---|
