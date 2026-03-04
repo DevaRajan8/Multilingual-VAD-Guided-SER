@@ -1,28 +1,28 @@
 """
-Novel Components for Multimodal Speech Emotion Recognition
+Novel Components for Multilingual VAD-Guided Speech Emotion Recognition
 
-This package contains the novel contributions for ACL 2026:
-1. Emotion-Aware Adaptive Fusion (EAAF)
-2. VAD-Guided Cross-Attention (VGA)
-3. Modality-Invariant Contrastive Learning (MICL)
+This package contains the novel contributions:
+1. Adaptive Modality Gating (AMG)
+2. Affect Space Cross-Attention (ASCA)
+3. Cross-Modal Alignment Loss (CMAL)
 """
 
 from .novel_components import (
-    EmotionAwareAdaptiveFusion,
-    VADGuidedCrossAttention,
-    VADGuidedBidirectionalAttention,
-    ModalityInvariantContrastiveLoss,
-    MICLProjector,
-    NovelMultimodalSER,
-    NovelMultiTaskLoss
+    AdaptiveModalityGating,
+    AffectSpaceCrossAttention,
+    AffectSpaceBidirectionalAttention,
+    CrossModalAlignmentLoss,
+    CrossModalProjectionHead,
+    MultilingualAffectFusionModel,
+    MultiObjectiveEmotionLoss
 )
 
 __all__ = [
-    'EmotionAwareAdaptiveFusion',
-    'VADGuidedCrossAttention',
-    'VADGuidedBidirectionalAttention',
-    'ModalityInvariantContrastiveLoss',
-    'MICLProjector',
-    'NovelMultimodalSER',
-    'NovelMultiTaskLoss'
+    'AdaptiveModalityGating',
+    'AffectSpaceCrossAttention',
+    'AffectSpaceBidirectionalAttention',
+    'CrossModalAlignmentLoss',
+    'CrossModalProjectionHead',
+    'MultilingualAffectFusionModel',
+    'MultiObjectiveEmotionLoss'
 ]

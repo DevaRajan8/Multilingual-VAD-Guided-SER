@@ -42,6 +42,11 @@ results.json
 best_models/
 
 # Datasets and Features
+test/
+results/
+metadata/
+mds/
+reference/
 features_common_6/
 temp_inference.wav
 

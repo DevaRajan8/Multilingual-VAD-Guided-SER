@@ -8,10 +8,10 @@ from sklearn.model_selection import train_test_split
 
 # 1. Configuration
 # REPLACE THIS with the path to your downloaded folder containing the .wav files
-SOURCE_AUDIO_DIR = "./wav" 
+SOURCE_AUDIO_DIR = "/dist_home/suryansh/sharukesh/speech/wav" 
 
-OUTPUT_DIR = "metadata_emodb"
-PROCESSED_AUDIO_DIR = "emodb_wavs_16k"
+OUTPUT_DIR = "/dist_home/suryansh/sharukesh/speech/metadata"
+PROCESSED_AUDIO_DIR = "/dist_home/suryansh/sharukesh/speech/emodb_wavs_16k"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(PROCESSED_AUDIO_DIR, exist_ok=True)
 
@@ -53,16 +53,54 @@ LABEL_MAP = {
     "neutral": 6
 }
 
+TARGET_RMS = 0.1  # Normalize all clips to this RMS loudness level
+
 def process_audio(src_path, dest_path, target_sr=16000):
     """
-    Reads audio, resamples to target_sr, and saves to dest_path.
-    Returns True if successful, False otherwise.
+    Loads audio from src_path and applies the full preprocessing pipeline:
+
+    Step 1 - Resample to 16 kHz:
+        librosa.load(..., sr=16000) reads audio at any original sample rate
+        and resamples it to exactly 16000 Hz. EmoDB is already 16k, so this
+        is a no-op here, but kept for safety and consistency with EMOVO.
+
+    Step 2 - Convert to Mono:
+        mono=True in librosa.load() ensures single-channel audio.
+        EmoDB is mono, but this guards against any edge-case stereo files.
+
+    Step 3 - Trim Silence:
+        librosa.effects.trim removes leading/trailing silence.
+        top_db=20 means frames >20dB quieter than peak are clipped off.
+        Why: Even studio-recorded EmoDB has small silent pads at clip edges.
+        Trimming keeps the focus on actual speech content.
+
+    Step 4 - RMS Amplitude Normalization:
+        We compute RMS = sqrt(mean(y^2)), then scale the signal so its RMS
+        equals TARGET_RMS (0.1). This compensates for the loudness gap between
+        EmoDB (loud, studio-quality acted speech) and IEMOCAP (naturalistic,
+        variable loudness conversational speech). Without normalization, the
+        model may learn to associate loudness with dataset identity rather than
+        emotion class.
     """
     try:
-        # Load with librosa (automatically resamples if needed)
-        y, sr = librosa.load(src_path, sr=target_sr)
-        
-        # Save using soundfile
+        # Step 1 + 2: Load, resample to target_sr, convert to mono
+        y, sr = librosa.load(src_path, sr=target_sr, mono=True)
+
+        # Step 3: Trim leading and trailing silence
+        y, _ = librosa.effects.trim(y, top_db=20)
+
+        # Safety check: skip if clip is too short after trimming (<0.3s)
+        if len(y) < target_sr * 0.3:
+            print(f"  Skipping {src_path} — too short after trimming ({len(y)/target_sr:.2f}s)")
+            return False
+
+        # Step 4: RMS Normalization
+        rms = np.sqrt(np.mean(y ** 2))
+        if rms > 1e-6:  # Guard against silent/zero clips
+            y = y * (TARGET_RMS / rms)
+        y = np.clip(y, -1.0, 1.0)  # Prevent float overflow artifacts
+
+        # Save processed audio as 16kHz WAV
         sf.write(dest_path, y, target_sr)
         return True
     except Exception as e:

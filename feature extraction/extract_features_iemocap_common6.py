@@ -19,12 +19,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 TEXT_MAX_LENGTH = 100
 
 # --- UPDATED PATHS (Using the new Common-6 CSVs) ---
-IEMOCAP_TRAIN_PATH = "metadata_common_6/IEMOCAP_Common6_train.csv"
-IEMOCAP_VAL_PATH =   "metadata_common_6/IEMOCAP_Common6_val.csv"
-IEMOCAP_TEST_PATH =  "metadata_common_6/IEMOCAP_Common6_test.csv"
+IEMOCAP_TRAIN_PATH = "/dist_home/suryansh/sharukesh/speech/metadata/IEMOCAP_Common6_train.csv"
+IEMOCAP_VAL_PATH =   "/dist_home/suryansh/sharukesh/speech/metadata/IEMOCAP_Common6_val.csv"
+IEMOCAP_TEST_PATH =  "/dist_home/suryansh/sharukesh/speech/metadata/IEMOCAP_Common6_test.csv"
 
 # Output folder for the final pickle files
-OUTPUT_PATH = "features_common_6/"
+OUTPUT_PATH = "/dist_home/suryansh/sharukesh/speech/features_common_6/"
 os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 # --- 1. Load Multilingual BERT ---

@@ -54,9 +54,9 @@ class AttentivePooling(nn.Module):
 # If you have the 'models' folder, you can just import them. 
 # Assuming you have the folder structure from previous steps:
 from models.novel_components import (
-    VADGuidedBidirectionalAttention,
-    EmotionAwareAdaptiveFusion,
-    MICLProjector
+    AffectSpaceBidirectionalAttention,
+    AdaptiveModalityGating,
+    CrossModalProjectionHead
 )
 
 class ACL2026Model(nn.Module):
@@ -101,14 +101,14 @@ class ACL2026Model(nn.Module):
         )
         
         self.vga_layers = nn.ModuleList([
-            VADGuidedBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
+            AffectSpaceBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
             for _ in range(num_layers)
         ])
         
         self.text_pool = AttentivePooling(hidden_dim)
         self.audio_pool = AttentivePooling(hidden_dim)
-        self.eaaf = EmotionAwareAdaptiveFusion(hidden_dim, dropout)
-        self.micl_projector = MICLProjector(hidden_dim, micl_dim, hidden_dim)
+        self.eaaf = AdaptiveModalityGating(hidden_dim, dropout)
+        self.micl_projector = CrossModalProjectionHead(hidden_dim, micl_dim, hidden_dim)
 
         self.vad_head = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim // 2),

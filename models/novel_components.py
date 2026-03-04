@@ -1,34 +1,34 @@
 """
-Novel Components for Multimodal Speech Emotion Recognition
-===========================================================
+Novel Components for Multilingual VAD-Guided Speech Emotion Recognition
+=======================================================================
 
-This module implements three novel contributions for ACL 2026:
+This module implements three novel contributions:
 
-1. Emotion-Aware Adaptive Fusion (EAAF)
+1. Adaptive Modality Gating (AMG)
    - Dynamically weights modalities based on emotion-discriminative confidence
    - Learns to emphasize the more reliable modality per sample
 
-2. VAD-Guided Cross-Attention (VGA)
+2. Affect Space Cross-Attention (ASCA)
    - Uses Valence-Arousal-Dominance space to guide attention weights
    - Incorporates psychological emotion theory into attention mechanism
 
-3. Modality-Invariant Contrastive Learning (MICL)
+3. Cross-Modal Alignment Loss (CMAL)
    - Learns emotion representations invariant across modalities
    - Enables robust cross-modal emotion understanding
 
 Mathematical Formulations:
 --------------------------
 
-EAAF (Emotion-Aware Adaptive Fusion):
+AMG (Adaptive Modality Gating):
     α_t = σ(W_g · [h_t; h_a; h_t ⊙ h_a] + b_g)
     h_fused = α_t · h_t + (1 - α_t) · h_a + β · (h_t ⊙ h_a)
 
-VGA (VAD-Guided Attention):
+ASCA (Affect Space Cross-Attention):
     A_guided = softmax(QK^T / √d_k + λ · M_VAD)
     M_VAD(i,j) = -||v_i - v_j||_2
 
-MICL (Modality-Invariant Contrastive Learning):
-    L_MICL = -log(exp(sim(z_t^i, z_a^i)/τ) / Σ_j exp(sim(z_t^i, z_a^j)/τ))
+CMAL (Cross-Modal Alignment Loss):
+    L_CMAL = -log(exp(sim(z_t^i, z_a^i)/τ) / Σ_j exp(sim(z_t^i, z_a^j)/τ))
 """
 
 import torch
@@ -39,14 +39,14 @@ import math
 
 
 # ============================================================
-# 1. EMOTION-AWARE ADAPTIVE FUSION (EAAF)
+# 1. ADAPTIVE MODALITY GATING (AMG)
 # ============================================================
 
-class EmotionAwareAdaptiveFusion(nn.Module):
+class AdaptiveModalityGating(nn.Module):
     """
-    Emotion-Aware Adaptive Fusion (EAAF)
+    Adaptive Modality Gating (AMG)
 
-    Instead of fixed-weight fusion, EAAF dynamically learns to weight
+    Instead of fixed-weight fusion, AMG dynamically learns to weight
     modalities based on their emotion-discriminative confidence for each sample.
 
     Mathematical Formulation:
@@ -71,7 +71,7 @@ class EmotionAwareAdaptiveFusion(nn.Module):
 
     Key Innovation:
     ---------------
-    Unlike standard fusion that uses fixed weights, EAAF learns sample-specific
+    Unlike standard fusion that uses fixed weights, AMG learns sample-specific
     modality importance. This is crucial for SER because:
     - Some emotions are better expressed vocally (e.g., anger with high arousal)
     - Some emotions have clearer lexical markers (e.g., sadness with specific words)
@@ -159,12 +159,12 @@ class EmotionAwareAdaptiveFusion(nn.Module):
 
 
 # ============================================================
-# 2. VAD-GUIDED CROSS-ATTENTION (VGA)
+# 2. AFFECT SPACE CROSS-ATTENTION (ASCA)
 # ============================================================
 
-class VADGuidedCrossAttention(nn.Module):
+class AffectSpaceCrossAttention(nn.Module):
     """
-    VAD-Guided Cross-Attention (VGA)
+    Affect Space Cross-Attention (ASCA)
 
     Incorporates Valence-Arousal-Dominance (VAD) psychological theory
     into the cross-attention mechanism. VAD provides a continuous
@@ -176,14 +176,14 @@ class VADGuidedCrossAttention(nn.Module):
     Standard cross-attention:
         A = softmax(QK^T / √d_k)
 
-    VAD-Guided attention:
+    Affect-Space-Guided attention:
         1. Project features to VAD space:
            v_q = W_v · Q,  v_k = W_v · K  ∈ R^{N×3}
 
-        2. Compute VAD affinity matrix:
+        2. Compute affect affinity matrix:
            M_VAD(i,j) = -||v_q[i] - v_k[j]||_2
 
-        3. Guide attention with VAD affinity:
+        3. Guide attention with affect affinity:
            A_guided = softmax(QK^T / √d_k + λ · M_VAD)
 
     Key Innovation:
@@ -230,20 +230,20 @@ class VADGuidedCrossAttention(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.norm = nn.LayerNorm(dim)
 
-    def compute_vad_affinity(
+    def compute_affect_affinity(
         self,
         query_vad: torch.Tensor,
         key_vad: torch.Tensor
     ) -> torch.Tensor:
         """
-        Compute VAD-based affinity matrix.
+        Compute affect-space-based affinity matrix.
 
         Args:
             query_vad: [B, Nq, 3] - VAD values for queries
             key_vad: [B, Nk, 3] - VAD values for keys
 
         Returns:
-            affinity: [B, Nq, Nk] - VAD affinity scores
+            affinity: [B, Nq, Nk] - affect affinity scores
         """
         # Compute pairwise L2 distance in VAD space
         # [B, Nq, 1, 3] - [B, 1, Nk, 3] -> [B, Nq, Nk, 3]
@@ -286,10 +286,10 @@ class VADGuidedCrossAttention(nn.Module):
         # Standard attention scores
         attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale  # [B, H, Nq, Nk]
 
-        # Compute VAD affinity
+        # Compute affect affinity
         query_vad = self.vad_proj(query)  # [B, Nq, 3]
         key_vad = self.vad_proj(key)      # [B, Nk, 3]
-        vad_affinity = self.compute_vad_affinity(query_vad, key_vad)  # [B, Nq, Nk]
+        vad_affinity = self.compute_affect_affinity(query_vad, key_vad)  # [B, Nq, Nk]
 
         # Add VAD guidance to attention scores
         # Expand vad_affinity for all heads: [B, 1, Nq, Nk]
@@ -313,11 +313,11 @@ class VADGuidedCrossAttention(nn.Module):
         return output, None
 
 
-class VADGuidedBidirectionalAttention(nn.Module):
+class AffectSpaceBidirectionalAttention(nn.Module):
     """
-    Bidirectional VAD-Guided Cross-Attention for multimodal fusion.
+    Bidirectional Affect Space Cross-Attention for multimodal fusion.
 
-    Applies VAD-guided attention in both directions:
+    Applies affect-space-guided attention in both directions:
     - Audio → Text: Audio queries attend to text keys
     - Text → Audio: Text queries attend to audio keys
     """
@@ -332,12 +332,12 @@ class VADGuidedBidirectionalAttention(nn.Module):
         super().__init__()
 
         # Audio attends to Text
-        self.audio_to_text = VADGuidedCrossAttention(
+        self.audio_to_text = AffectSpaceCrossAttention(
             dim, num_heads, dropout, vad_lambda
         )
 
         # Text attends to Audio
-        self.text_to_audio = VADGuidedCrossAttention(
+        self.text_to_audio = AffectSpaceCrossAttention(
             dim, num_heads, dropout, vad_lambda
         )
 
@@ -386,12 +386,12 @@ class VADGuidedBidirectionalAttention(nn.Module):
 
 
 # ============================================================
-# 3. MODALITY-INVARIANT CONTRASTIVE LEARNING (MICL)
+# 3. CROSS-MODAL ALIGNMENT LOSS (CMAL)
 # ============================================================
 
-class ModalityInvariantContrastiveLoss(nn.Module):
+class CrossModalAlignmentLoss(nn.Module):
     """
-    Modality-Invariant Contrastive Learning (MICL)
+    Cross-Modal Alignment Loss (CMAL)
 
     Learns emotion representations that are invariant across modalities
     by pulling together text and audio representations of the same
@@ -407,8 +407,8 @@ class ModalityInvariantContrastiveLoss(nn.Module):
     2. Cross-modal contrastive loss (audio-to-text):
        L_a2t = -1/B Σ_i log( exp(sim(z_a^i, z_t^i)/τ) / Σ_j exp(sim(z_a^i, z_t^j)/τ) )
 
-    3. Final MICL loss:
-       L_MICL = (L_t2a + L_a2t) / 2
+    3. Final CMAL loss:
+       L_CMAL = (L_t2a + L_a2t) / 2
 
     where:
     - sim(u, v) = u^T v / (||u|| ||v||)  (cosine similarity)
@@ -417,7 +417,7 @@ class ModalityInvariantContrastiveLoss(nn.Module):
 
     Key Innovation:
     ---------------
-    MICL enforces that:
+    CMAL enforces that:
     1. Same utterance's text and audio should be close in embedding space
     2. Different utterances should be far apart regardless of modality
     3. The learned space captures emotion semantics shared across modalities
@@ -499,9 +499,10 @@ class ModalityInvariantContrastiveLoss(nn.Module):
         return loss, aux_info
 
 
-class MICLProjector(nn.Module):
+
+class CrossModalProjectionHead(nn.Module):
     """
-    Projection head for MICL that maps modality features to shared space.
+    Projection head for CMAL that maps modality features to shared space.
 
     Uses separate projectors for each modality that map to a common
     low-dimensional space optimized for contrastive learning.
@@ -552,14 +553,14 @@ class MICLProjector(nn.Module):
 # 4. INTEGRATED NOVEL MODEL
 # ============================================================
 
-class NovelMultimodalSER(nn.Module):
+class MultilingualAffectFusionModel(nn.Module):
     """
-    Novel Multimodal Speech Emotion Recognition Model
+    Multilingual Affect Fusion Model for Speech Emotion Recognition
 
     Integrates all three novel contributions:
-    1. VAD-Guided Cross-Attention (VGA) for cross-modal fusion
-    2. Emotion-Aware Adaptive Fusion (EAAF) for final fusion
-    3. Modality-Invariant Contrastive Learning (MICL) as auxiliary loss
+    1. Affect Space Cross-Attention (ASCA) for cross-modal fusion
+    2. Adaptive Modality Gating (AMG) for final fusion
+    3. Cross-Modal Alignment Loss (CMAL) as auxiliary loss
 
     Architecture:
     -------------
@@ -569,11 +570,11 @@ class NovelMultimodalSER(nn.Module):
            ↓
     Self-Attention: Unimodal refinement
            ↓
-    VAD-Guided Cross-Attention: Cross-modal fusion with VAD guidance
+    Affect Space Cross-Attention: Cross-modal fusion with VAD guidance
            ↓
-    Emotion-Aware Adaptive Fusion: Dynamic modality weighting
+    Adaptive Modality Gating: Dynamic modality weighting
            ↓
-    MICL Projector: Cross-modal contrastive learning
+    Cross-Modal Projection Head: Cross-modal contrastive learning
            ↓
     Classifier: Emotion prediction
     """
@@ -632,18 +633,18 @@ class NovelMultimodalSER(nn.Module):
             batch_first=True
         )
 
-        # Novel Component 1: VAD-Guided Cross-Attention layers
+        # Novel Component 1: Affect Space Cross-Attention layers
         self.vga_layers = nn.ModuleList([
-            VADGuidedBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
+            AffectSpaceBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
             for _ in range(num_layers)
         ])
 
-        # Novel Component 2: Emotion-Aware Adaptive Fusion
-        self.eaaf = EmotionAwareAdaptiveFusion(hidden_dim, dropout)
+        # Novel Component 2: Adaptive Modality Gating
+        self.eaaf = AdaptiveModalityGating(hidden_dim, dropout)
 
-        # Novel Component 3: MICL Projector
-        self.micl_projector = MICLProjector(hidden_dim, micl_dim, hidden_dim)
-        self.micl_loss = ModalityInvariantContrastiveLoss(temperature=0.07)
+        # Novel Component 3: Cross-Modal Projection Head
+        self.micl_projector = CrossModalProjectionHead(hidden_dim, micl_dim, hidden_dim)
+        self.micl_loss = CrossModalAlignmentLoss(temperature=0.07)
 
         # Classification head
         self.classifier = nn.Sequential(
@@ -707,7 +708,7 @@ class NovelMultimodalSER(nn.Module):
         text_h = self.text_self_attn(text_h)
         audio_h = self.audio_self_attn(audio_h)
 
-        # VAD-Guided Cross-Attention (Novel Component 1)
+        # Affect Space Cross-Attention (Novel Component 1)
         for vga_layer in self.vga_layers:
             audio_h, text_h = vga_layer(audio_h, text_h)
 
@@ -715,10 +716,10 @@ class NovelMultimodalSER(nn.Module):
         text_pooled = text_h.mean(dim=1)   # [B, D]
         audio_pooled = audio_h.mean(dim=1)  # [B, D]
 
-        # Emotion-Aware Adaptive Fusion (Novel Component 2)
+        # Adaptive Modality Gating (Novel Component 2)
         fused, fusion_aux = self.eaaf(text_pooled, audio_pooled)
 
-        # MICL projection and loss (Novel Component 3)
+        # Cross-Modal Alignment Loss projection (Novel Component 3)
         text_proj, audio_proj = self.micl_projector(text_pooled, audio_pooled)
         micl_loss, micl_aux = self.micl_loss(text_proj, audio_proj, labels)
 
@@ -747,17 +748,17 @@ class NovelMultimodalSER(nn.Module):
 # 5. MULTI-TASK LOSS WITH NOVEL COMPONENTS
 # ============================================================
 
-class NovelMultiTaskLoss(nn.Module):
+class MultiObjectiveEmotionLoss(nn.Module):
     """
     Multi-task loss integrating all novel components.
 
     Total Loss:
-        L = λ_cls * L_cls + λ_vad * L_vad + λ_micl * L_micl
+        L = λ_cls * L_cls + λ_vad * L_vad + λ_cmal * L_cmal
 
     where:
     - L_cls: Cross-entropy classification loss
     - L_vad: VAD regression loss (MSE)
-    - L_micl: Modality-Invariant Contrastive Loss
+    - L_cmal: Cross-Modal Alignment Loss
     """
 
     def __init__(
@@ -830,3 +831,4 @@ class NovelMultiTaskLoss(nn.Module):
             'vad': vad_loss,
             'micl': micl_loss
         }
+        

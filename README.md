@@ -1,119 +1,182 @@
 # Multilingual VAD-Guided Speech Emotion Recognition (SER)
 
-This repository contains the implementation of a Multilingual Multimodal Speech Emotion Recognition (SER) system. The system leverages Voice Activity Detection (VAD) to guide attention mechanisms and employs a novel emotion-aware adaptive fusion strategy.
+A joint multilingual, multimodal Speech Emotion Recognition (SER) system trained simultaneously on five corpora spanning four languages. The model fuses audio representations from `emotion2vec` with multilingual text embeddings from `mBERT`, guided by a novel VAD-aware cross-modal attention mechanism and optimized with a multi-task training objective.
+
+> 📄 **Paper in progress** — IEEE submission (2026)
+
+---
 
 ## 🌟 Key Features
 
-- **Multimodal Architecture**: Fuses text (Multilingual BERT) and audio (`emotion2vec_plus_large`) features.
-- **VAD-Guided Attention**: Enhances cross-modal interaction by focusing on speech-active regions.
+- **Joint Multilingual Training**: Single model trained on IEMOCAP (English), RAVDESS (English), EmoDB (German), EMOVO (Italian), and SUBESCO (Bangla) under a unified 6-class emotion taxonomy.
+- **Multimodal Fusion**: Fuses `emotion2vec_plus_large` audio features (1024-dim) with `bert-base-multilingual-cased` text features (768-dim).
 - **Novel Components**:
-  - **VADGuidedBidirectionalAttention**: Aligns audio and text representations using VAD cues.
-  - **EmotionAwareAdaptiveFusion (EAAF)**: Dynamically weights modalities based on emotional content.
-  - **MICL Projector**: Implements Supervised Contrastive Learning (SupCon) for better representation learning.
-- **Robust Loss Function**: Combines Focal Loss (for class imbalance), VAD Regression Loss, and SupCon Loss.
-- **Multilingual Support**: trained and tested on datasets like IEMOCAP (English), EmoDB (German), and EMOVO (Italian).
+  - **Affect Space Cross-Attention (ASCA)**: VAD-guided bidirectional cross-attention that grounds multimodal fusion in psychological emotion theory.
+  - **Adaptive Modality Gating (AMG)**: Per-sample dynamic weighting of audio vs. text modalities based on emotion-discriminative confidence.
+  - **Cross-Modal Alignment Loss (CMAL)**: Supervised contrastive objective enforcing shared emotion representations across modalities and languages.
+- **Multi-task Objective**: Combines Focal Loss (class imbalance), VAD auxiliary regression, and CMAL (SupCon).
+- **Stable Training**: Auxiliary losses reduce run-to-run variance by **2.6×** compared to a focal-only baseline.
+
+---
 
 ## 📁 Repository Structure
 
-- `main.py`: Main training script for the ACL 2026 Enhanced model.
-- `inference.py`: Script for performing inference on single audio files with text input.
-- `models/`: Contains the model architecture definition.
-  - `novel_components.py`: Implementation of VAD-Attention, EAAF, and MICL.
-- `processing/`: Scripts to preprocess raw datasets (IEMOCAP, EmoDB, EMOVO) into pickle feature files.
-- `metadata/`: CSV metadata files for the supported datasets.
-- `evaluate_metrics.py`: Script for computing evaluation metrics.
+```
+.
+├── main.py                      # Main joint training script (5 datasets, 5-run evaluation)
+├── inference.py                 # Single-file inference with emotion + VAD output
+├── evaluate_metrics.py          # Evaluation: WA, UA, Macro-F1, WF1 (zero-support excluded)
+├── models/
+│   └── novel_components.py      # ASCA, AMG, CMAL implementations
+├── processing/                  # Feature extraction scripts per dataset
+│   ├── process_iemocap_common6.py
+│   ├── process_emodb.py
+│   ├── process_emovo.py
+│   ├── process_ravdess.py
+│   └── process_subesco.py
+├── feature extraction/          # Legacy per-dataset extraction scripts
+├── comparison/                  # Comparison data and scripts
+├── metadata/                    # CSV files: audio_file, raw_text, label, speaker_id [gitignored]
+├── results/                     # JSON results from multi-run evaluations [gitignored]
+├── architecture.png             # Model architecture diagram
+└── requirements.txt
+```
+
+---
 
 ## 🚀 Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/Multilingual-VAD-Guided-SER.git
+   git clone https://github.com/gshyamv/Multilingual-VAD-Guided-SER.git
    cd Multilingual-VAD-Guided-SER
    ```
 
-2. **Install Dependencies:**
-   Ensure you have Python 3.8+ installed. Install the required packages:
+2. **Install dependencies:**
    ```bash
-   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  # Adjust for your CUDA version
-   pip install transformers librosa soundfile scikit-learn numpy funasr
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+   pip install transformers librosa soundfile scikit-learn numpy funasr pymupdf
    ```
-   *Note: Use `funasr` for the `emotion2vec` model.*
+
+---
 
 ## 🛠️ Data Preparation
 
-Before training, you need to extract features from your raw audio datasets. Use the scripts in the `processing/` directory.
+Extract features for each dataset using scripts in `processing/`:
 
-Example for EmoDB:
 ```bash
-python processing/process_emodb.py --root_dir /path/to/EmoDB --output_dir features_common_6
+python processing/process_emodb.py   --root_dir /path/to/EmoDB   --output_dir features_common_6
+python processing/process_iemocap_common6.py --root_dir /path/to/IEMOCAP --output_dir features_common_6
+python processing/process_emovo.py   --root_dir /path/to/EMOVO   --output_dir features_common_6
+python processing/process_ravdess.py --root_dir /path/to/RAVDESS --output_dir features_common_6
+python processing/process_subesco.py --root_dir /path/to/SUBESCO --output_dir features_common_6
 ```
-*Repeat for other datasets (IEMOCAP, EMOVO) using their respective scripts.*
+
+Each script outputs `.pkl` files containing `(audio_feat, text_feat, label, speaker_id)` tuples.
+
+---
 
 ## 🏃 Usage
 
-### Training
-
-To train the model, use `main.py`. You can specify multiple datasets for training and validation.
+### Training (Joint Multilingual)
 
 ```bash
 python main.py \
-  --train features_common_6/IEMOCAP_Common6_train.pkl features_common_6/EmoDB_Common6_train.pkl \
-  --val features_common_6/IEMOCAP_Common6_val.pkl features_common_6/EmoDB_Common6_val.pkl \
-  --epochs 100 \
-  --batch_size 32 \
-  --num_runs 5 \
-  --output results.json
+  --train features_common_6/IEMOCAP_train.pkl features_common_6/EmoDB_train.pkl \
+          features_common_6/EMOVO_train.pkl features_common_6/RAVDESS_train.pkl \
+          features_common_6/SUBESCO_train.pkl \
+  --val   features_common_6/IEMOCAP_val.pkl features_common_6/EmoDB_val.pkl \
+          features_common_6/EMOVO_val.pkl features_common_6/RAVDESS_val.pkl \
+          features_common_6/SUBESCO_val.pkl \
+  --epochs 100 --batch_size 32 --num_runs 5 --output results/joint_results.json
 ```
-
-**Arguments:**
-- `--train`: List of training pickle files.
-- `--val`: List of validation pickle files.
-- `--epochs`: Number of training epochs (default: 100).
-- `--batch_size`: Batch size (default: 32).
-- `--num_runs`: Number of independent runs for statistical significance (default: 5).
 
 ### Inference
 
-To run the model on a single audio file:
-
 ```bash
-python inference.py --audio path/to/audio.wav --text "The corresponding text transcript"
+python inference.py --audio path/to/audio.wav --text "The corresponding transcript"
 ```
+Outputs: predicted emotion label, confidence score, and VAD (Valence, Arousal, Dominance) estimates.
 
-This will output the predicted emotion, confidence score, and VAD estimation values (Valence, Arousal, Dominance).
+---
 
 ## 📊 Model Architecture
 
-![Model Architecture](architecture.png)
+![Architecture](architecture.png)
 
-The model generally follows this flow:
-1. **Feature Extraction**: 
-   - **Audio**: `emotion2vec_plus_large` (1024-dim).
-   - **Text**: `bert-base-multilingual-cased` (768-dim).
-2. **Projection**: Linear layers project both to a shared `hidden_dim`.
-3. **Cross-Modal VAD Attention**: Audio and Text attend to each other, guided by VAD scores.
-4. **Pooling**: Attentive Pooling aggregates sequences.
-5. **Fusion**: EAAF fuses the pooled representations.
-6. **Task Heads**: 
-   - **Emotion Classifier**: Predicts one of 6 classes (Anger, Sadness, Happiness, Neutral, Fear, Disgust).
-   - **VAD Regressor**: Predicts continuous VAD values.
+| Stage | Component | Detail |
+|---|---|---|
+| Feature Extraction | emotion2vec | Audio → 1024-dim |
+| Feature Extraction | mBERT | Text → 768-dim |
+| Projection | Linear + LayerNorm | Both → `hidden_dim` |
+| Cross-Modal Fusion | ASCA (novel) | VAD-guided bidirectional attention |
+| Fusion | AMG (novel) | Per-sample modality gating |
+| Auxiliary Loss | CMAL (novel) | Supervised cross-modal contrastive |
+| Task Heads | Classifier + VAD head | 6-class emotion + VAD regression |
 
-## 📈 Performance Results
+---
 
- The model has been evaluated on three diverse datasets (IEMOCAP, EmoDB, EMOVO) in a multilingual setting. Below is the summary of the performance achieved:
+## 📈 Experimental Results
 
- | Dataset | Language | Accuracy | Weighted F1 |
- | :--- | :--- | :--- | :--- |
- | **IEMOCAP** | English 🇺🇸 | **78.99%** | 79.14% |
- | **EmoDB** | German 🇩🇪 | **98.25%** | 98.24% |
- | **EMOVO** | Italian 🇮🇹 | **88.10%** | 87.58% |
- | **Global** | Multilingual 🌍 | **80.10%** | 80.25% |
+> All results use the **Common-6 emotion set**: Anger, Sadness, Happiness, Neutral, Fear, Disgust.  
+> Macro-F1 **excludes zero-support classes**. Val UA reported as **Mean ± Std across 5 runs**.
 
- *Note: Results demonstrate the model's robustness across different languages and recording conditions.*
+### Joint Multilingual Model — Per-Dataset (best run)
 
- ## 🤝 Contributing
+| Dataset | Language | WA | UA | Macro-F1 |
+|---|---|---|---|---|
+| IEMOCAP | English | 77.18% | 67.28% | 66.64% |
+| EmoDB | German | 96.49% | 96.10% | 96.54% |
+| EMOVO | Italian | 69.05% | 69.05% | 65.22% |
+| SUBESCO | Bangla | 59.00% | 59.00% | 58.96% |
+| RAVDESS | English (acted) | 78.41% | 79.17% | 78.75% |
+| **Global (pooled)** | Multilingual | **69.83%** | **66.16%** | **65.51%** |
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+**Val UA (5 runs): 81.72% ± 0.27%**
+
+### Joint vs. Per-Dataset Baseline
+
+| Dataset | Per-Dataset WA | Joint WA | Δ |
+|---|---|---|---|
+| IEMOCAP | 78.10% | 77.18% | −0.92% |
+| EmoDB | 100.00% | 96.49% | −3.51% |
+| EMOVO | 82.14% | 69.05% | −13.09% |
+| SUBESCO | 58.58% | **59.00%** | **+0.42%** ✅ |
+| RAVDESS | 77.27% | **78.41%** | **+1.14%** ✅ |
+
+### Ablation — Loss Component Contributions
+
+| Configuration | Val UA (5-run) | Test WA | Macro-F1 |
+|---|---|---|---|
+| Focal Loss only | 81.54% ± 0.69% | 68.78% | 64.32% |
+| + VAD only | 81.68% ± 0.29% | **71.11%** | **66.33%** |
+| + CMAL only | 81.79% ± 0.28% | 69.86% | 65.50% |
+| **Full (VAD + CMAL)** | **81.72% ± 0.27%** | 69.83% | 65.51% |
+
+### Comparison with Published Baselines
+
+| Method | Year | Modality | IEMOCAP WA | EmoDB WA | RAVDESS WA |
+|---|---|---|---|---|---|
+| GM-TCNet | 2022 | Audio | — | 90.17% | 87.35% |
+| TIM-Net | 2023 | Audio | 71.65% | 94.67% | 92.08% |
+| EmoFusioNet | 2025 | Audio | 79.30% | 99.63% | 99.02% |
+| **Ours (Joint)** | 2026 | Audio+Text | **77.18%** | **96.49%** | **78.41%** |
+
+---
+
+## 🧪 Novelty Summary
+
+1. **ASCA** — Affect Space Cross-Attention: VAD-distance-based affinity matrix guides cross-modal attention.
+2. **AMG** — Adaptive Modality Gating: Sigmoid gate over `[h_t; h_a; h_t⊙h_a]` selects per-sample modality weights.
+3. **CMAL** — Cross-Modal Alignment Loss: Symmetric InfoNCE between text and audio embeddings, with same-emotion bonus term.
+4. **VAD Auxiliary Supervision** — Acts as a class-balance regularizer, improving UA on minority emotion classes (e.g., +2.41% on IEMOCAP Fear).
+5. **SUBESCO Integration** — First known SER benchmark on Bangla SUBESCO within a joint multilingual framework.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
 
 ## 📜 License
 

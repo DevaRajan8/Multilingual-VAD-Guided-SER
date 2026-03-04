@@ -2,14 +2,18 @@ import csv
 import os
 import re
 import io
+import numpy as np
 import soundfile as sf
 import librosa
 from datasets import load_dataset, Audio
 
+TARGET_SR = 16000
+TARGET_RMS = 0.1   # Normalize all clips to this RMS loudness level
+
 # 1. Configuration
 DATASET_ID = "AbstractTTS/IEMOCAP"
-OUTPUT_DIR = "metadata_common_6"  # Changed directory name for clarity
-AUDIO_SAVE_DIR = "iemocap_wavs"
+OUTPUT_DIR = "/dist_home/suryansh/sharukesh/speech/metadata"
+AUDIO_SAVE_DIR = "/dist_home/suryansh/sharukesh/speech/iemocap_wavs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(AUDIO_SAVE_DIR, exist_ok=True)
 
@@ -70,25 +74,63 @@ def main():
                 filename += ".wav"
             
             abs_path = os.path.abspath(os.path.join(AUDIO_SAVE_DIR, filename))
-            
-            if not os.path.exists(abs_path):
+
+            # save_ok tracks whether we have a valid preprocessed file.
+            # We only add to rows if preprocessing succeeded (or was already done).
+            save_ok = os.path.exists(abs_path)
+
+            if not save_ok:
                 try:
                     audio_bytes = sample["audio"]["bytes"]
+
+                    # --- Step 1: Decode bytes and resample to 16 kHz / mono ---
+                    # We read raw bytes via BytesIO, then use librosa.resample if
+                    # the source SR differs. mono=True averages any stereo channels.
                     with io.BytesIO(audio_bytes) as f:
                         audio_array, sampling_rate = sf.read(f)
-                    
-                    if sampling_rate != 16000:
-                        audio_array = librosa.resample(audio_array, orig_sr=sampling_rate, target_sr=16000)
-                    
-                    sf.write(abs_path, audio_array, 16000)
+
+                    # Convert stereo to mono by averaging channels
+                    if audio_array.ndim > 1:
+                        audio_array = np.mean(audio_array, axis=1)
+
+                    # Resample if not already 16 kHz
+                    if sampling_rate != TARGET_SR:
+                        audio_array = librosa.resample(
+                            audio_array, orig_sr=sampling_rate, target_sr=TARGET_SR
+                        )
+
+                    # --- Step 2: Trim leading/trailing silence ---
+                    # top_db=20: frames >20 dB quieter than the peak are treated
+                    # as silence and removed. IEMOCAP utterances are already fairly
+                    # tight, but this standardizes edge behavior across all datasets.
+                    audio_array, _ = librosa.effects.trim(audio_array, top_db=20)
+
+                    # Skip clips that are too short after trimming (<0.3s)
+                    if len(audio_array) < TARGET_SR * 0.3:
+                        print(f"  Skipping {filename} — too short after trim ({len(audio_array)/TARGET_SR:.2f}s)")
+                        continue
+
+                    # --- Step 3: RMS Amplitude Normalization ---
+                    # RMS = sqrt(mean(y^2)) measures average signal loudness.
+                    # We scale the signal so its RMS equals TARGET_RMS (0.1).
+                    # This compensates for loudness differences between IEMOCAP
+                    # (naturalistic, variable) and EmoDB/EMOVO (studio-acted).
+                    rms = np.sqrt(np.mean(audio_array ** 2))
+                    if rms > 1e-6:  # Guard against silent/zero-level clips
+                        audio_array = audio_array * (TARGET_RMS / rms)
+                    audio_array = np.clip(audio_array, -1.0, 1.0)  # prevent overflow
+
+                    # Save the preprocessed audio
+                    sf.write(abs_path, audio_array, TARGET_SR)
+                    save_ok = True
                 except Exception as e:
                     print(f"  Warning: Could not save {filename}: {e}")
-                    continue
-            
-            # Collect metadata
-            text = sample["transcription"]
-            session_num = get_session_number(sample["file"])
-            rows.append([abs_path, text, label, session_num])
+
+            # Only collect metadata if the preprocessed file is confirmed on disk
+            if save_ok:
+                text = sample["transcription"]
+                session_num = get_session_number(sample["file"])
+                rows.append([abs_path, text, label, session_num])
         else:
             # Track what we are skipping
             if emo_str in skipped_counts:

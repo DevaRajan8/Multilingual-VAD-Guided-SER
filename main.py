@@ -11,6 +11,7 @@ from torch.utils.data import DataLoader, Dataset, ConcatDataset
 from sklearn.metrics import (
     balanced_accuracy_score, accuracy_score, f1_score
 )
+import warnings
 import numpy as np
 import random
 from collections import Counter
@@ -23,9 +24,9 @@ import json
 
 # Assuming models.novel_components is in the path
 from models.novel_components import (
-    VADGuidedBidirectionalAttention,
-    EmotionAwareAdaptiveFusion,
-    MICLProjector
+    AffectSpaceBidirectionalAttention,
+    AdaptiveModalityGating,
+    CrossModalProjectionHead
 )
 
 # ============================================================
@@ -281,9 +282,9 @@ class ACL2026Model(nn.Module):
             dropout=dropout, activation='gelu', batch_first=True
         )
         
-        # Cross-Modal Fusion (VGA)
+        # Cross-Modal Fusion (ASCA)
         self.vga_layers = nn.ModuleList([
-            VADGuidedBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
+            AffectSpaceBidirectionalAttention(hidden_dim, num_heads, dropout, vad_lambda)
             for _ in range(num_layers)
         ])
         
@@ -291,11 +292,11 @@ class ACL2026Model(nn.Module):
         self.text_pool = AttentivePooling(hidden_dim)
         self.audio_pool = AttentivePooling(hidden_dim)
         
-        # Fusion (EAAF)
-        self.eaaf = EmotionAwareAdaptiveFusion(hidden_dim, dropout)
+        # Fusion (AMG)
+        self.eaaf = AdaptiveModalityGating(hidden_dim, dropout)
         
-        # SupCon Projector
-        self.micl_projector = MICLProjector(hidden_dim, micl_dim, hidden_dim)
+        # Cross-Modal Projector
+        self.micl_projector = CrossModalProjectionHead(hidden_dim, micl_dim, hidden_dim)
 
         # VAD Head
         self.vad_head = nn.Sequential(
@@ -420,13 +421,23 @@ class ACL2026Loss(nn.Module):
 
 
 def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray, emotion_labels: List[str]) -> Dict:
+    # Only compute macro metrics over classes that actually appear in y_true
+    # This prevents Disgust (0 samples in IEMOCAP test) from dragging down Macro-F1 and UA
+    present_labels = sorted(set(y_true.tolist()))
+    excluded = [emotion_labels[i] for i in range(len(emotion_labels)) if i not in present_labels]
+    if excluded:
+        print(f"  [Metrics] Excluding zero-support classes from macro metrics: {excluded}")
+
     wa = accuracy_score(y_true, y_pred)
-    ua = balanced_accuracy_score(y_true, y_pred)
-    wf1 = f1_score(y_true, y_pred, average='weighted')
-    macro_f1 = f1_score(y_true, y_pred, average='macro')
-    
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        ua = balanced_accuracy_score(y_true, y_pred)   # already excludes zero-support classes
+    wf1      = f1_score(y_true, y_pred, average='weighted', labels=present_labels, zero_division=0)
+    macro_f1 = f1_score(y_true, y_pred, average='macro',    labels=present_labels, zero_division=0)
+
     return {
-        'WA': wa, 'UA': ua, 'WF1': wf1, 'Macro_F1': macro_f1
+        'WA': wa, 'UA': ua, 'WF1': wf1, 'Macro_F1': macro_f1,
+        'excluded_classes': excluded
     }
 
 def evaluate(model, dataloader, device, config):
@@ -532,14 +543,40 @@ def main():
     parser = argparse.ArgumentParser(description="ACL 2026 Multilingual SER")
     
     # UPDATED: 'nargs=+' allows passing multiple files for training
-    parser.add_argument("--train", nargs='+', default=["features_common_6/IEMOCAP_Common6_train.pkl", "features_common_6/EmoDB_Common6_train.pkl"])
-    parser.add_argument("--val", nargs='+', default=["features_common_6/IEMOCAP_Common6_val.pkl", "features_common_6/EmoDB_Common6_val.pkl"])
-    parser.add_argument("--test", nargs='+', default=["features_common_6/IEMOCAP_Common6_test.pkl", "features_common_6/EmoDB_Common6_test.pkl"])
+    parser.add_argument("--train", nargs='+', default=[
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/IEMOCAP_Common6_train.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EmoDB_Common6_train.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EMOVO_Common6_train.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/SUBESCO_Common6_train.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/RAVDESS_Common6_train.pkl",
+    ])
+    parser.add_argument("--val", nargs='+', default=[
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/IEMOCAP_Common6_val.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EmoDB_Common6_val.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EMOVO_Common6_val.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/SUBESCO_Common6_val.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/RAVDESS_Common6_val.pkl",
+    ])
+    parser.add_argument("--test", nargs='+', default=[
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/IEMOCAP_Common6_test.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EmoDB_Common6_test.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/EMOVO_Common6_test.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/SUBESCO_Common6_test.pkl",
+        "/dist_home/suryansh/sharukesh/speech/features_common_6/RAVDESS_Common6_test.pkl",
+    ])
     
-    parser.add_argument("--epochs", type=int, default=100)
-    parser.add_argument("--batch_size", type=int, default=32)
-    parser.add_argument("--num_runs", type=int, default=5)
-    parser.add_argument("--output", type=str, default="Multilingual_results.json")
+    parser.add_argument("--epochs",       type=int,   default=100)
+    parser.add_argument("--batch_size",   type=int,   default=32)
+    parser.add_argument("--num_runs",     type=int,   default=5)
+    parser.add_argument("--output",       type=str,   default="Multilingual_results.json")
+
+    # Ablation flags — override loss weights without editing code
+    parser.add_argument("--vad_weight",    type=float, default=0.3,
+                        help="Weight for VAD regression loss (0.0 = ablate VAD guidance)")
+    parser.add_argument("--supcon_weight", type=float, default=0.2,
+                        help="Weight for supervised contrastive loss (0.0 = ablate SupCon)")
+    parser.add_argument("--cls_weight",   type=float, default=1.0,
+                        help="Weight for focal classification loss")
     
     args = parser.parse_args()
     
@@ -547,35 +584,79 @@ def main():
         epochs=args.epochs,
         batch_size=args.batch_size,
         num_runs=args.num_runs,
-        emotion_config="common_6"
+        emotion_config="common_6",
+        vad_weight=args.vad_weight,
+        supcon_weight=args.supcon_weight,
+        cls_weight=args.cls_weight,
     )
+    print(f"Loss weights → cls={config.cls_weight}  vad={config.vad_weight}  supcon={config.supcon_weight}")
     
     # Load and concatenate datasets
     print("Initializing Training Datasets...")
     train_ds = MultimodalEmotionDataset(args.train)
     print("Initializing Validation Datasets...")
     val_ds = MultimodalEmotionDataset(args.val)
+    print("Initializing Test Datasets...")
+    test_ds = MultimodalEmotionDataset(args.test)
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     all_results = []
-    
+    best_run_idx = 0       # tracks which run achieved the highest val UA
+    best_run_ua  = -1.0
+
     for i in range(config.num_runs):
         res, model = train_single_run(config, train_ds, val_ds, i, device)
         all_results.append(res)
 
-        # --- ADD THIS TO SAVE THE MODEL ---
         save_path = f"best_model_run_{i}.pth"
         torch.save(model.state_dict(), save_path)
         print(f"Model saved to {save_path}")
-        # ----------------------------------
-        
-    # Stats
+
+        # Track which run yielded the best validation UA
+        if res['UA'] > best_run_ua:
+            best_run_ua  = res['UA']
+            best_run_idx = i
+
+    # ── Validation Stats ──────────────────────────────────────────────────────
     uas = [r['UA'] for r in all_results]
-    print(f"\nFinal Results ({config.num_runs} runs):")
-    print(f"Mean UA: {np.mean(uas)*100:.2f} ± {np.std(uas)*100:.2f}")
-    
+    print(f"\nValidation Results ({config.num_runs} runs):")
+    print(f"Mean UA    : {np.mean(uas)*100:.2f}% ± {np.std(uas)*100:.2f}%")
+    print(f"Best Run   : run {best_run_idx}  (Val UA = {best_run_ua*100:.2f}%)")
+
     with open(args.output, 'w') as f:
         json.dump(all_results, f, indent=2)
+
+    # ── Test Set Evaluation (auto-select best checkpoint by val UA) ───────────
+    best_ckpt = f"best_model_run_{best_run_idx}.pth"
+    print(f"\n── Test Set Evaluation ──")
+    print(f"Loading best checkpoint: {best_ckpt}  (run {best_run_idx}, Val UA={best_run_ua*100:.2f}%)")
+
+    best_model = ACL2026Model(
+        text_dim=config.text_dim,
+        audio_dim=config.audio_dim,
+        hidden_dim=config.hidden_dim,
+        num_heads=config.num_heads,
+        num_layers=config.num_layers,
+        num_classes=config.num_classes,
+        dropout=config.dropout,
+        vad_lambda=config.vad_lambda,
+        micl_dim=config.micl_dim
+    ).to(device)
+    best_model.load_state_dict(torch.load(best_ckpt, map_location=device))
+
+    test_loader = DataLoader(test_ds, batch_size=config.batch_size, shuffle=False)
+    test_metrics, _ = evaluate(best_model, test_loader, device, config)
+
+    print(f"Test WA       : {test_metrics['WA']*100:.2f}%")
+    print(f"Test UA       : {test_metrics['UA']*100:.2f}%")
+    print(f"Test WF1      : {test_metrics['WF1']*100:.2f}%")
+    print(f"Test Macro-F1 : {test_metrics['Macro_F1']*100:.2f}%")
+
+    # Save test results alongside the val results JSON
+    test_output_path = args.output.replace(".json", "_test.json")
+    with open(test_output_path, 'w') as f:
+        json.dump({**test_metrics, "best_run": best_run_idx, "best_run_val_ua": best_run_ua}, f, indent=2)
+    print(f"Test results saved to {test_output_path}")
         
 if __name__ == "__main__":
     main()

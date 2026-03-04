@@ -19,11 +19,11 @@ TEXT_MAX_LENGTH = 100
 
 # Input CSVs (From the previous CSV generation step)
 # Ensure these point to where you saved the EmoDB csv files
-EMODB_TRAIN_PATH = "./german/metadata_emodb/EmoDB_train.csv"
-EMODB_VAL_PATH =   "./german/metadata_emodb/EmoDB_val.csv"
-EMODB_TEST_PATH =  "./german/metadata_emodb/EmoDB_test.csv"
+EMODB_TRAIN_PATH = "/dist_home/suryansh/sharukesh/speech/metadata/EmoDB_train.csv"
+EMODB_VAL_PATH =   "/dist_home/suryansh/sharukesh/speech/metadata/EmoDB_val.csv"
+EMODB_TEST_PATH =  "/dist_home/suryansh/sharukesh/speech/metadata/EmoDB_test.csv"
 
-OUTPUT_PATH = "features_common_6/"
+OUTPUT_PATH = "/dist_home/suryansh/sharukesh/speech/features_common_6/"
 os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 # --- EMOTION MAPPING ---

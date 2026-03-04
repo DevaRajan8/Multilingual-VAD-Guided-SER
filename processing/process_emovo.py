@@ -1,15 +1,16 @@
 import csv
 import os
+import numpy as np
 import soundfile as sf
 import librosa
 
 # 1. Configuration
 # REPLACE THIS with the path to your unzipped 'EMOVO' folder 
 # (The one containing folders f1, f2, documents, etc.)
-SOURCE_ROOT_DIR = "./EMOVO" 
+SOURCE_ROOT_DIR = "/dist_home/suryansh/sharukesh/speech/EMOVO" 
 
-OUTPUT_DIR = "metadata_common_6"
-PROCESSED_AUDIO_DIR = "emovo_wavs_16k"
+OUTPUT_DIR = "/dist_home/suryansh/sharukesh/speech/metadata"
+PROCESSED_AUDIO_DIR = "/dist_home/suryansh/sharukesh/speech/emovo_wavs_16k"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(PROCESSED_AUDIO_DIR, exist_ok=True)
 
@@ -49,11 +50,65 @@ SENTENCE_MAP = {
     "d2": "Porti con te quella cosa?"
 }
 
+TARGET_RMS = 0.1  # Normalize all clips to this RMS loudness level
+
 def process_audio(src_path, dest_path, target_sr=16000):
+    """
+    Loads audio from src_path and applies the full preprocessing pipeline:
+
+    Step 1 - Resample to 16 kHz:
+        librosa.load(..., sr=16000) reads the audio at any original sample rate
+        and resamples it down (or up) to exactly 16000 Hz using a high-quality
+        sinc resampler. This ensures emotion2vec always receives audio at the
+        sample rate it was trained on, regardless of whether the source was
+        EMOVO (48 kHz), EmoDB (16 kHz), or any other rate.
+
+    Step 2 - Convert to Mono:
+        If the recording has 2 channels (stereo), librosa averages them into a
+        single channel. emotion2vec expects mono audio; mixing to mono prevents
+        feature extraction errors and removes any stereo-specific loudness
+        differences between datasets.
+
+    Step 3 - Trim Silence:
+        librosa.effects.trim removes stretches of silence from the start and
+        end of the clip. top_db=20 means any frame more than 20 dB quieter than
+        the loudest frame is considered silence and gets clipped off.
+        Why: EMOVO files often have noticeable leading/trailing silence from the
+        recording session. Trimming ensures emotion2vec focuses attention on
+        actual speech, not silence — consistent with how IEMOCAP clips are
+        already tightly segmented.
+
+    Step 4 - RMS Amplitude Normalization:
+        RMS (Root Mean Square) is the average "loudness" of the signal.
+        We compute it as: rms = sqrt(mean(y^2))
+        Then scale the signal so its RMS equals TARGET_RMS (0.1, in [-1,1] range).
+        Why: EmoDB is studio-recorded acted speech (loud and clean), IEMOCAP is
+        naturalistic dyadic conversation (variable loudness), and EMOVO is Italian
+        acted speech. Without normalization, the model could exploit loudness as a
+        spurious cue rather than learning true emotion patterns. RMS normalization
+        brings all three datasets to the same loudness ballpark.
+    """
     try:
-        # Load with librosa (handles resampling automatically)
-        y, sr = librosa.load(src_path, sr=target_sr)
-        # Save as 16kHz wav
+        # Step 1: Load + Resample to target_sr (handles any source SR)
+        y, sr = librosa.load(src_path, sr=target_sr, mono=True)  # Step 2: mono=True here
+
+        # Step 3: Trim leading and trailing silence
+        # top_db=20: frames >20dB below peak are treated as silence
+        y, _ = librosa.effects.trim(y, top_db=20)
+
+        # Safety check: skip if clip is too short after trimming (<0.3s)
+        if len(y) < target_sr * 0.3:
+            print(f"  Skipping {src_path} — too short after trimming ({len(y)/target_sr:.2f}s)")
+            return False
+
+        # Step 4: RMS Normalization
+        rms = np.sqrt(np.mean(y ** 2))
+        if rms > 1e-6:  # Avoid division by zero for silent clips
+            y = y * (TARGET_RMS / rms)
+        # Clip to [-1, 1] to prevent any float overflow artifacts
+        y = np.clip(y, -1.0, 1.0)
+
+        # Save the processed audio as a new 16kHz WAV
         sf.write(dest_path, y, target_sr)
         return True
     except Exception as e:
